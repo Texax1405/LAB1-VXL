@@ -198,38 +198,45 @@ int main(void)
    /* Infinite loop */
    /* USER CODE BEGIN WHILE */
    /*=== Exercise 4 ===*/
-   int counter = 0;
+
    while (1)
    {
 	  //State 1: light 1 green -> red, light 2 red -> off
 	  HAL_GPIO_WritePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin, GPIO_PIN_RESET);
 	  HAL_GPIO_WritePin(LED_RED_2_GPIO_Port, LED_RED_2_Pin, GPIO_PIN_SET);
 	  HAL_GPIO_WritePin(LED_GREEN_2_GPIO_Port, LED_GREEN_2_Pin, GPIO_PIN_SET);
-	  HAL_Delay(3000); //straight light turns from green to yellow
+	  for (int i = 3; i > 0; i--) {
+		  display7SEG(i);
+		  HAL_Delay(1000);
+	  }
+	  //straight light turns from green to yellow
 	  HAL_GPIO_WritePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin, GPIO_PIN_SET);
 	  HAL_GPIO_WritePin(LED_YELLOW_1_GPIO_Port, LED_YELLOW_1_Pin, GPIO_PIN_SET);
-	  HAL_Delay(2000);
+	  for (int i = 2; i > 0; i--) {
+		  display7SEG(i);
+		  HAL_Delay(1000);
+	  }
 	  HAL_GPIO_WritePin(LED_YELLOW_1_GPIO_Port, LED_YELLOW_1_Pin, GPIO_PIN_RESET);
 	  HAL_GPIO_WritePin(LED_RED_2_GPIO_Port, LED_RED_2_Pin, GPIO_PIN_RESET);
-	  HAL_Delay(1000);
-
- 	  if(counter >= 10) counter = 0;
- 	  display7SEG(counter++);
- 	  HAL_Delay(1000);
+	  //HAL_Delay(1000);
 
 	  //State 2: light 1 red -> off, light 2 green -> red
 	  HAL_GPIO_WritePin(LED_GREEN_2_GPIO_Port, LED_GREEN_2_Pin, GPIO_PIN_RESET);
 	  HAL_GPIO_WritePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin, GPIO_PIN_SET);
 	  HAL_GPIO_WritePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin, GPIO_PIN_SET);
-	  HAL_Delay(3000); //straight light turns from green to yellow
+	  for (int i = 5; i > 2; i--) {
+		  display7SEG(i);
+		  HAL_Delay(1000);
+	  } //straight light turns from green to yellow
 	  HAL_GPIO_WritePin(LED_GREEN_2_GPIO_Port, LED_GREEN_2_Pin, GPIO_PIN_SET);
 	  HAL_GPIO_WritePin(LED_YELLOW_2_GPIO_Port, LED_YELLOW_2_Pin, GPIO_PIN_SET);
-	  HAL_Delay(2000);
+	  for (int i = 2; i > 0; i--) {
+		  display7SEG(i);
+		  HAL_Delay(1000);
+	  }
 	  HAL_GPIO_WritePin(LED_YELLOW_2_GPIO_Port, LED_YELLOW_2_Pin, GPIO_PIN_RESET);
 	  HAL_GPIO_WritePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin, GPIO_PIN_RESET);
-	  HAL_Delay(1000);
-
-
+	  //HAL_Delay(1000);
    }
 
    /*=== Exercise 5 ===*/

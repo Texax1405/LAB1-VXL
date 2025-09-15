@@ -103,28 +103,28 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
-  void setNumberOnClocK(int num) {
+  void setNumberOnClocK(int num) { //exercise 8
 	  HAL_GPIO_WritePin(GPIOA, LED_PIN[num], GPIO_PIN_SET);
   }
 
-  void clearNumberOnClock(int num) {
+  void clearNumberOnClock(int num) { //exercise 9
 	  HAL_GPIO_WritePin(GPIOA, LED_PIN[num], GPIO_PIN_RESET);
   }
 
-  void clearAllClock() {
+  void clearAllClock() { // exercise 7
 	  for (int i = 0; i < 12; i++) {
 		  clearNumberOnClock(i);
 	  }
   }
 
-  void displayTime(int hr, int mn, int sec) {
-//	  if (hr >= 12) {
-//		  hr -= 12;
-//	  }
-//
-//	  if (hr == 0) {
-//		  hr = 12;
-//	  }
+  void displayTime(int hr, int mn, int sec) { // exercise 10
+	  if (hr >= 12) {
+		  hr -= 12;
+	  }
+
+	  if (hr == 0) {
+		  hr = 12;
+	  }
 
 	  hr = hr - 1;
 	  int minuteLed = (mn + 4) / 5;
